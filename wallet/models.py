@@ -37,6 +37,7 @@ class Chain(CreateUpdateTracker):
         verbose_name = _('chain')
         verbose_name_plural = _('chain')
 
+
 class Pubkey(CreateUpdateTracker):
     user = models.ForeignKey(get_user_model(),related_name='wallet_pubkey',blank=True,null=True,verbose_name=_("User ID"),on_delete=models.CASCADE)
     public_key = models.CharField(verbose_name=_("Account Extended Public Key"),max_length=128)
@@ -44,7 +45,7 @@ class Pubkey(CreateUpdateTracker):
     chain = models.ForeignKey(Chain, on_delete=models.CASCADE)
     
     def __str__(self):
-        return f"{self.public_key[:6]}...{self.public_key[6:]}"
+        return f"{self.public_key[:8]}...{self.public_key[-8:]}"
     
     class Meta:
         verbose_name = _('public key')
@@ -72,7 +73,7 @@ class Token(CreateUpdateTracker):
     )
 
     def __str__(self) -> str:
-        return f"{self.token_symbol}"
+        return f"{self.token_name}"
 
     class Meta:
         verbose_name = _('Token')
@@ -115,3 +116,5 @@ class Address(CreateUpdateTracker):
     class Meta:
         verbose_name = _('address')
         verbose_name_plural = _('addresses')
+
+

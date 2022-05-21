@@ -7,3 +7,4 @@ ADDRESS_TYPE = (
     (DEPOSIT,_("deposit")),
     (SYSTEM_LEASE,_("system lease")),
 )
+
